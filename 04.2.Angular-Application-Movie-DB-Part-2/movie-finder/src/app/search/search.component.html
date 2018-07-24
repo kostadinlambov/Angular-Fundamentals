@@ -1,0 +1,50 @@
+
+<div class="jumbotron">
+    <div class="container">
+      <h1>Find a movie</h1>
+      <p>Search for a movie using the form below:</p>
+      <!-- <form (ngSubmit)="searchFnc()" #searchForm="ngForm"> -->
+      <!-- <form (ngSubmit)="searchFnc(inputString)" #searchForm="ngForm">
+        <input 
+            name="inputString" 
+            [(ngModel)]="inputString" 
+            type="text" 
+            class="form-control" 
+            maxlength="10" 
+            minlength="1" 
+            #inputField="ngModel"
+            ng-required="true"
+        /> 
+         {{inputString}}
+        <br>
+        <!-- <input #name type="text" class="form-control"> -->
+        <!-- <button type="submit">Search</button> -->
+        <!-- <button (click)="searchFnc(name.value)">Search</button> -->
+      <!-- </form> --> -->
+
+      <form #form="ngForm" (submit)="searchFnc(form.value)">
+        <input type="text" class="form-control" name="search" ngModel>
+        <button  type="sumbit" class="btn btn-primary">Search</button>
+    </form>  
+
+    </div>
+  </div>
+
+
+<div *ngIf="isSeachButtonClicked">
+    <div *ngIf="foundMovies.results.length > 0; else loading" class="panel panel-default"  >
+      <div class="panel-heading">
+        <h3  class="panel-title mt-5 mb-5 text-center">Matched Movies</h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div *ngFor="let movie of foundMovies.results;let i=index" class="col-md-2">
+            <app-movie *ngIf="i < 6" [movie]="movie"></app-movie>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #loading>
+    <h1 class="panel-title mt-5 text-center">No matches! </h1>
+  </ng-template>

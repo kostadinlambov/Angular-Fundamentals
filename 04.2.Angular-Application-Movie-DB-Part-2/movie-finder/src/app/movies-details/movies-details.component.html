@@ -1,0 +1,23 @@
+<div class="mt-5" *ngIf="movie">
+  <div class="panel panel-default mt-5 pt-5">
+      <div class="panel-heading">
+          <h3 class="panel-title pb-5 text-center">{{movie.title}}</h3>    
+      </div>
+      <div class="panel-body">
+          <div class="row">
+              <div class="col-md-5">
+                  <img class="thumbnail" src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}">
+              </div>    
+              <div class="col-md-7">
+                  <ul class="list-group ">
+                      <li class="list-group-item mr-5">Genres: <span>{{genresString}}</span></li>    
+                      <!-- <li class="list-group-item mr-5">Genres: <span *ngFor="let genre of movie.genres">{{genre.name}},</span></li>     -->
+                      <li class="list-group-item mr-5">Release Date: {{movie.release_date}}</li>
+                  </ul>
+                  <br>
+                  <a *ngIf="movie.homepage" href="{{movie.homepage}}" target="_blank" class="btn btn-default">Visit Movie Website</a>
+              </div>  
+          </div>
+      </div>
+  </div>    
+</div>
